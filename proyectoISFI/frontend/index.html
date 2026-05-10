@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISFI | Analytics</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div id="toast-container" aria-live="polite"></div>
+
+<div id="loading-overlay" class="hidden">
+    <div class="spinner-box">
+        <div class="spinner"></div>
+        <span>Cargando…</span>
+    </div>
+</div>
+
+<div id="confirm-overlay" class="hidden" onclick="if(event.target===this)cerrarConfirmacion()">
+    <div class="confirm-box">
+        <p id="confirm-mensaje"></p>
+        <div class="confirm-actions">
+            <button class="btn-text" onclick="cerrarConfirmacion()">Cancelar</button>
+            <button id="confirm-ok" class="btn-primary">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<div id="login-screen">
+    <div class="login-box">
+        <div class="login-header">
+            <h2>ISFI <span>Analytics</span></h2>
+            <p>Modelo Predictivo de Deserción</p>
+        </div>
+        <div class="login-form">
+            <input type="text" id="username" placeholder="Usuario Institucional" autocomplete="username">
+            <input type="password" id="password" placeholder="Contraseña" autocomplete="current-password">
+            <button onclick="intentarLogin()">Ingresar al Sistema</button>
+        </div>
+    </div>
+</div>
+
+<div id="main-dashboard" class="dashboard-container hidden">
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="cerrarSidebar()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <img src="logo_isfi.png" alt="ISFI" class="brand-logo">
+            <div class="brand-text">ISFI <span>ANALYTICS</span></div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-item active" id="nav-dash" onclick="mostrarSeccion('dashboard')">📊 Panel Principal</div>
+            <div class="nav-item hidden" id="nav-gest" onclick="mostrarSeccion('estudiantes')">👥 Gestión Estudiantil</div>
+            <div class="nav-item hidden" id="nav-notif" onclick="mostrarSeccion('notificaciones')">
+                🔔 Notificaciones <span id="nav-notif-badge" class="nav-badge hidden">0</span>
+            </div>
+            <div class="nav-item hidden" id="nav-usuarios" onclick="mostrarSeccion('usuarios')">🔑 Gestión de Usuarios</div>
+            <div class="nav-item hidden" id="nav-logs" onclick="mostrarSeccion('logs')">📋 Logs de Actividad</div>
+        </nav>
+        <button class="btn-logout-sidebar" onclick="cerrarSesion()">Cerrar Sesión</button>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="btn-menu-toggle" onclick="toggleSidebar()" aria-label="Menú">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+                <div class="header-info">
+                    <h1 id="welcome-msg">Bienvenido</h1>
+                    <p id="current-date" class="text-muted"></p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" id="search-name" placeholder="Buscar estudiante…" oninput="filtrarDatos()">
+                </div>
+                <div class="filter-group" style="display:flex;gap:10px;">
+                    <div id="container-filtro-programa" class="hidden">
+                        <select id="filter-programa" onchange="filtrarDatos()">
+                            <option value="">Todos los Programas</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select id="filter-riesgo" onchange="filtrarDatos()">
+                            <option value="">Todos los Riesgos</option>
+                            <option value="Alto">Riesgo Alto</option>
+                            <option value="Medio">Riesgo Medio</option>
+                            <option value="Bajo">Riesgo Bajo</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select id="filter-semestre" onchange="filtrarDatos()">
+                            <option value="">Todos los Semestres</option>
+                        </select>
+                    </div>
+                    <div id="container-filtro-estrato" class="hidden">
+                        <select id="filter-estrato" onchange="filtrarDatos()">
+                            <option value="">Todos los Estratos</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="notification-bell" id="notification-bell" style="display:none;" onclick="toggleNotificaciones()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <span class="notif-badge hidden" id="notif-count">0</span>
+                </div>
+                <button id="btn-dark-mode" onclick="toggleModoOscuro()" title="Modo oscuro"
+                    style="background:none;border:1px solid #e2e8f0;border-radius:8px;padding:7px 9px;cursor:pointer;color:var(--text-dark);display:flex;align-items:center;transition:0.2s;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <div class="user-profile">
+                    <div class="user-details"><span id="display-role">--</span></div>
+                    <div class="user-avatar" id="user-initials">--</div>
+                </div>
+            </div>
+        </header>
+
+        <div id="notif-panel" class="notif-panel hidden">
+            <div class="notif-panel-header">
+                <h3>Centro de Alertas</h3>
+                <div style="display:flex;gap:10px;align-items:center;">
+                    <button class="btn-text" onclick="marcarTodasLeidas()">Marcar todas leídas</button>
+                    <button class="btn-text" style="font-size:1.1rem;padding:0 6px;" onclick="toggleNotificaciones()">✕</button>
+                </div>
+            </div>
+            <div class="notif-tabs">
+                <button class="notif-tab active" onclick="filtrarNotifs('todas', this)">Todas</button>
+                <button class="notif-tab" onclick="filtrarNotifs('Alto', this)">🔴 Alto</button>
+                <button class="notif-tab" onclick="filtrarNotifs('Medio', this)">🟡 Medio</button>
+                <button class="notif-tab" onclick="filtrarNotifs('no-leidas', this)">No leídas</button>
+            </div>
+            <div class="notif-list" id="notif-list">
+                <p class="notif-empty">Sin alertas nuevas</p>
+            </div>
+        </div>
+
+        <div class="content-body">
+
+            <div id="section-dashboard">
+                <div class="kpi-grid">
+                    <div class="kpi-card"><small>ESTUDIANTES TOTALES</small><p id="stat-total">0</p></div>
+                    <div class="kpi-card critical"><small>RIESGO CRÍTICO</small><p id="count-alto">0</p></div>
+                    <div class="kpi-card success"><small>ASISTENCIA PROMEDIO</small><p id="stat-asis">0%</p></div>
+                    <div class="kpi-card warning"><small>NOTA PROMEDIO</small><p id="stat-nota">0.0</p></div>
+                </div>
+                <div class="charts-container">
+                    <div class="chart-card"><h3>Distribución de Riesgo</h3><div class="canvas-holder"><canvas id="chartRiesgo"></canvas></div></div>
+                    <div class="chart-card"><h3>Promedio por Programa</h3><div class="canvas-holder"><canvas id="chartProgramas"></canvas></div></div>
+                </div>
+                <div class="table-card">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                        <h3 style="margin:0;">Tabla de Riesgo</h3>
+                        <button class="btn-primary btn-sm" onclick="exportarEstudiantes()">⬇ Exportar CSV</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="tabla-estudiantes">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th><th>Programa</th><th>Sem.</th><th>Promedio</th><th>Asistencia</th>
+                                    <th class="col-bienestar hidden">Estrato</th><th>Score</th><th>Riesgo</th><th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-notificaciones" class="hidden">
+                <div class="notif-section-header">
+                    <div><h2>Centro de Alertas</h2><p class="text-muted" style="margin:4px 0 0;font-size:0.9rem;">Estudiantes con riesgo de deserción detectado</p></div>
+                    <button class="btn-primary" onclick="marcarTodasLeidas()">✓ Marcar todas leídas</button>
+                </div>
+                <div class="notif-resumen-grid" id="notif-resumen-grid"></div>
+                <div class="notif-full-list" id="notif-full-list"></div>
+            </div>
+
+            <div id="section-gestion" class="hidden">
+                <div class="section-header">
+                    <h2>Gestión Estudiantil</h2>
+                    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                        <div class="search-bar-inline">
+                            <input type="text" id="search-gestion" placeholder="Buscar en tabla…" oninput="filtrarGestion()">
+                        </div>
+                        <button class="btn-primary" onclick="mostrarFormulario()">+ Nuevo Estudiante</button>
+                    </div>
+                </div>
+
+                <div id="form-nuevo-estudiante" class="form-container hidden">
+                    <div class="form-grid">
+                        <div class="input-group"><label>Nombre Completo</label><input type="text" id="new-nombre" placeholder="Ej: Juan Pérez García"></div>
+                        <div class="input-group"><label>Semestre <small>(1–12)</small></label><input type="number" id="new-semestre" min="1" max="12"></div>
+                        <div class="input-group"><label>Promedio <small>(0.0–5.0)</small></label><input type="number" id="new-promedio" step="0.1" min="0" max="5"></div>
+                        <div class="input-group"><label>Asistencia % <small>(0–100)</small></label><input type="number" id="new-asistencia" min="0" max="100"></div>
+                        <div class="input-group"><label>Estrato <small>(1–6)</small></label><input type="number" id="new-estrato" min="1" max="6"></div>
+                    </div>
+                    <div class="form-footer">
+                        <button class="btn-text" onclick="mostrarFormulario()">Cancelar</button>
+                        <button class="btn-primary" onclick="guardarNuevoEstudiante()">Guardar Estudiante</button>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <table id="tabla-gestion">
+                        <thead>
+                            <tr>
+                                <th>Nombre del Estudiante</th><th>Programa</th><th>Semestre</th><th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="modal-editar-overlay" class="hidden" style="position:fixed;inset:0;background:rgba(15,23,42,0.55);display:flex;align-items:center;justify-content:center;z-index:2000;backdrop-filter:blur(4px);">
+                <div style="background:white;border-radius:16px;padding:36px;width:460px;box-shadow:0 25px 60px rgba(0,0,0,0.2);position:relative;">
+                    <button onclick="cerrarModalEditar()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:#64748b;">✕</button>
+                    <h3 style="margin:0 0 4px;color:var(--primary);">✏ Editar Estudiante</h3>
+                    <p id="edit-nombre" style="margin:0 0 24px;color:var(--text-muted);font-size:0.9rem;font-weight:600;"></p>
+                    <input type="hidden" id="edit-id">
+                    <input type="hidden" id="edit-programa">
+                    <div class="form-grid" style="grid-template-columns:1fr 1fr;gap:16px;">
+                        <div class="input-group"><label>Semestre <small>(1–12)</small></label><input type="number" id="edit-semestre" min="1" max="12"></div>
+                        <div class="input-group"><label>Promedio <small>(0.0–5.0)</small></label><input type="number" id="edit-promedio" step="0.1" min="0" max="5"></div>
+                        <div class="input-group"><label>Asistencia % <small>(0–100)</small></label><input type="number" id="edit-asistencia" min="0" max="100"></div>
+                        <div class="input-group"><label>Estrato <small>(1–6)</small></label><input type="number" id="edit-estrato" min="1" max="6"></div>
+                    </div>
+                    <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:24px;">
+                        <button class="btn-text" onclick="cerrarModalEditar()">Cancelar</button>
+                        <button id="btn-guardar-edicion" class="btn-primary" onclick="guardarEdicionEstudiante()">Guardar Cambios</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-usuarios" class="hidden">
+                <div class="section-header" style="display:flex;justify-content:space-between;align-items:center;padding:0 40px 20px;">
+                    <h2>Administración de Usuarios</h2>
+                    <button class="btn-primary" onclick="mostrarFormularioUsuario()">+ Nuevo Usuario</button>
+                </div>
+                <div id="form-nuevo-usuario" class="form-container hidden">
+                    <div class="form-grid">
+                        <div class="input-group"><label>Usuario</label><input type="text" id="u-user"></div>
+                        <div class="input-group"><label>Contraseña</label><input type="password" id="u-pass"></div>
+                        <div class="input-group"><label>Nombre Completo</label><input type="text" id="u-nombre"></div>
+                        <div class="input-group">
+                            <label>Rol</label>
+                            <select id="u-rol">
+                                <option value="profesor">Profesor</option>
+                                <option value="bienestar">Bienestar</option>
+                                <option value="director">Director</option>
+                            </select>
+                        </div>
+                        <div class="input-group"><label>Asignación</label><input type="text" id="u-grado"></div>
+                    </div>
+                    <div class="form-footer" style="margin-top:20px;">
+                        <button class="btn-text" onclick="mostrarFormularioUsuario()">Cancelar</button>
+                        <button class="btn-primary" onclick="guardarNuevoUsuario()">Registrar Usuario</button>
+                    </div>
+                </div>
+                <div class="table-card">
+                    <table id="tabla-usuarios">
+                        <thead><tr><th>Usuario</th><th>Nombre</th><th>Rol</th><th>Asignación</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="section-logs" class="hidden">
+                <div class="notif-section-header">
+                    <div>
+                        <h2>Logs de Actividad</h2>
+                        <p class="text-muted" style="margin:4px 0 0;font-size:0.9rem;">Registro de todas las acciones realizadas en el sistema</p>
+                    </div>
+                    <div style="display:flex;gap:10px;">
+                        <button class="btn-primary" onclick="exportarLogs()">⬇ Exportar CSV</button>
+                        <button class="btn-primary" style="background:#e11d48;" onclick="limpiarLogs()">🗑 Limpiar</button>
+                    </div>
+                </div>
+                <div class="notif-resumen-grid" id="log-resumen-grid"></div>
+                <div style="display:flex;gap:8px;padding:0 40px 20px;flex-wrap:wrap;">
+                    <button class="log-tab active" onclick="filtrarLogs('todas',this)">Todos</button>
+                    <button class="log-tab" onclick="filtrarLogs('LOGIN',this)">🔐 Sesiones</button>
+                    <button class="log-tab" onclick="filtrarLogs('REGISTRO_ESTUDIANTE',this)">👤 Estudiantes</button>
+                    <button class="log-tab" onclick="filtrarLogs('REGISTRO_USUARIO',this)">🔑 Usuarios</button>
+                </div>
+                <div class="notif-full-list" id="log-full-list"></div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

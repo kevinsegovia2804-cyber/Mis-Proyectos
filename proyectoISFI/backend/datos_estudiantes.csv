@@ -1,0 +1,101 @@
+id,nombre,programa,semestre,asistencia,promedio,estrato
+1,Andrés Felipe Rodríguez,Ingeniería de Sistemas,2,70,3.0,1
+2,Isabel Cristina Martínez,Administración de Empresas,4,98,4.5,3
+3,Juan Esteban Beltrán,Tecnología en Logística,2,62,3.1,2
+4,Lucía Fernanda Sánchez,Ingeniería de Sistemas,3,50,2.2,1
+5,Mateo Alejandro Quintero,Diseño Gráfico,3,40,2.5,2
+6,Camila Andrea Gaviria,Tecnología en Regencia,4,92,4.1,3
+7,Diego Armando Zuluaga,Ingeniería de Sistemas,2,90,3.5,2
+8,Elena Patricia Holguín,Administración de Empresas,1,78,3.4,1
+9,Santiago Andrés Hoyos,Tecnología en Electrónica,3,60,2.7,2
+10,Mariana Estefanía Ríos,Ingeniería de Sistemas,4,95,4.8,4
+11,Samuel Ricardo Pineda,Diseño Gráfico,2,70,3.0,2
+12,Isabela María Orozco,Tecnología en Logística,1,50,2.5,1
+13,Nicolás David Henao,Ingeniería de Sistemas,4,90,4.2,3
+14,Sofía Alejandra Restrepo,Administración de Empresas,2,75,3.0,2
+15,Lucas Gabriel Montoya,Tecnología en Regencia,3,68,2.8,1
+16,Daniela María Arango,Ingeniería de Sistemas,3,94,4.6,3
+17,Sebastián Camilo Berrío,Diseño Gráfico,4,40,3.5,2
+18,Martina Lucía Castrillón,Tecnología en Electrónica,2,40,1.9,1
+19,Alejandro José Agudelo,Ingeniería de Sistemas,1,88,3.7,2
+20,Valeria Sofía Ospina,Administración de Empresas,4,91,4.0,3
+21,Mateo Francisco Villegas,Tecnología en Logística,4,55,2.2,1
+22,Sara Michelle Carmona,Ingeniería de Sistemas,1,97,4.9,4
+23,Felipe Andrés Bedoya,Diseño Gráfico,1,72,3.1,2
+24,Gabriela Inés Tabares,Tecnología en Regencia,2,60,2.6,1
+25,Julián Alberto Echeverri,Ingeniería de Sistemas,3,85,3.8,2 I
+26,Adriana Sofía Palacio,Administración de Empresas,3,93,4.3,3
+27,Kevin Eduardo Múnera,Tecnología en Electrónica,4,48,2.0,1
+28,Paula Andrea Usuga,Ingeniería de Sistemas,2,99,5.0,3
+29,Ricardo Arturo Lopera,Tecnología en Logística,2,77,3.2,2
+30,Emilio José Serna,Diseño Gráfico,1,89,3.6,2
+31,Ximena Patricia Cárdenas,Administración de Empresas,3,65,2.9,1
+32,Jorge Eliécer Builes,Ingeniería de Sistemas,2,92,4.1,3
+33,Natalia María Posada,Tecnología en Regencia,4,80,3.4,2
+34,Simón Alberto Chaverra,Tecnología en Electrónica,1,58,2.3,1
+35,Laura Cristina Tuberquia,Ingeniería de Sistemas,4,95,4.7,4
+36,Andrés Mario Urrego,Administración de Empresas,2,74,3.1,2
+37,Tatiana Marcela Piedrahíta,Diseño Gráfico,2,86,3.9,3
+38,Oscar Manuel Calle,Tecnología en Logística,3,42,2.0,1
+39,Claudia Elena Grajales,Ingeniería de Sistemas,1,90,4.2,2
+40,Hugo Fernando Tamayo,Tecnología en Electrónica,4,68,2.7,1
+41,Beatriz Eugenia Foronda,Administración de Empresas,2,96,4.8,3
+42,Mario Germán Loaiza,Diseño Gráfico,4,79,3.3,2
+43,Elena Margarita Isaza,Ingeniería de Sistemas,3,52,2.4,1
+44,Víctor Manuel Atehortúa,Tecnología en Logística,4,88,3.7,3
+45,Rosa Elvira Cano,Administración de Empresas,4,91,4.0,2
+46,Luis Fernando Galeano,Diseño Gráfico,3,63,2.6,1
+47,Carmen Julia Preciado,Ingeniería de Sistemas,2,94,4.5,4
+48,José Joaquín Correa,Tecnología en Regencia,1,82,3.5,2
+49,Juan Guillermo Roldán,Tecnología en Electrónica,2,49,2.1,1
+50,Ana María Vahos,Administración de Empresas,2,98,4.9,3
+51,Roberto León Granda,Ingeniería de Sistemas,4,70,3.0,2
+52,Gloria Stella Penagos,Diseño Gráfico,4,87,3.8,1
+53,Christian Jair Escudero,Tecnología en Logística,2,93,4.4,3
+54,Shaira Vanessa Marín,Tecnología en Regencia,3,55,2.5,1
+55,Gustavo de Jesús Benjumea,Ingeniería de Sistemas,4,89,3.6,2
+56,Franklin Oliveros,Administración de Empresas,1,92,4.1,3
+57,Luis Alberto Santamaría,Tecnología en Electrónica,3,76,3.2,2
+58,Mercedes Lucía Vallejo,Diseño Gráfico,1,45,2.0,1
+59,Carlos Mario Domínguez,Ingeniería de Sistemas,3,95,4.7,4
+60,Cecilia Inés Vanegas,Administración de Empresas,1,83,3.4,2
+61,Héctor Fabio Castaño,Tecnología en Logística,1,59,2.2,1
+62,William de Jesús Acevedo,Ingeniería de Sistemas,3,90,4.0,3
+63,Rubén Darío Bohórquez,Diseño Gráfico,2,78,3.3,2
+64,Marcos Tulio Salgado,Tecnología en Regencia,4,66,2.8,1
+65,Juan Carlos Londoño,Administración de Empresas,4,97,4.8,4
+66,Carlos Julio Alarcón,Ingeniería de Sistemas,2,84,3.7,2
+67,Andrés Mauricio Baena,Tecnología en Electrónica,1,51,2.4,1
+68,Stefany Patricia Carvajal,Diseño Gráfico,4,91,4.2,3
+69,Jorge Mario Barrientos,Administración de Empresas,3,73,3.1,2
+70,Rafael Augusto Rendón,Ingeniería de Sistemas,1,40,1.8,1
+71,Dairo Enrique Murillo,Tecnología en Logística,3,96,4.6,3
+72,Jorge Hernán Colorado,Diseño Gráfico,4,80,3.5,2
+73,Silvio José Mafla,Tecnología en Regencia,2,64,2.7,1
+74,Pedro Nel Cañas,Ingeniería de Sistemas,4,94,4.3,3
+75,Kevin Alexis Solórzano,Administración de Empresas,2,77,3.2,2
+76,Patricia Yaneth Cuartas,Tecnología en Electrónica,4,48,2.1,1
+77,Gabriel Jaime Girón,Diseño Gráfico,3,50,3.0,2
+78,Darío de Jesús Meléndez,Ingeniería de Sistemas,3,81,3.4,2
+79,Luz Marina Hincapié,Administración de Empresas,2,55,2.3,1
+80,Luis Javier Cardona,Tecnología en Logística,3,88,3.8,3
+81,Andrés Leonardo Villada,Diseño Gráfico,3,75,3.0,2
+82,Paola Andrea Giraldo,Ingeniería de Sistemas,4,50,2.5,1
+83,Jesús Antonio Pareja,Tecnología en Regencia,4,93,4.4,3
+84,Yeison Fabián Flórez,Administración de Empresas,1,86,3.9,2
+85,Francy Elena Mazo,Tecnología en Electrónica,2,42,1.9,1
+86,Giovanny Arturo Botero,Ingeniería de Sistemas,2,90,4.1,3
+87,Jhonny Alexander Berrio,Diseño Gráfico,4,78,3.3,2
+88,Jorge Iván Múnera,Administración de Empresas,2,50,2.2,1
+89,Luis Alfonso Chavarría,Tecnología en Logística,4,95,4.6,4
+90,Javier Orlando Duarte,Ingeniería de Sistemas,2,82,3.5,2
+91,Nelson Enrique Córdoba,Tecnología en Regencia,2,60,2.6,1
+92,Jaime Alberto Uribe,Administración de Empresas,3,91,4.0,3
+93,Alex Mauricio Cadavid,Diseño Gráfico,1,74,3.1,2
+94,Herbert Alexander Vargas,Ingeniería de Sistemas,1,45,2.0,1
+95,Miguel Ángel Morales,Tecnología en Electrónica,4,94,4.5,3
+96,Omar Darío Guisao,Administración de Empresas,3,87,3.6,2
+97,Erick Steven Arrieta,Tecnología en Logística,2,53,2.4,1
+98,Israel David Sepúlveda,Ingeniería de Sistemas,4,89,3.9,3
+99,Daniel Esteban Granados,Diseño Gráfico,3,71,2.9,2
+100,Nelson de Jesús Portela,Administración de Empresas,2,65,2.7,1
