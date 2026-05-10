@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cultura – Cartagena de Indias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --gold:#D4A017; --coral:#E8522A; --teal:#1A7A6E; --cream:#FDF6EC; --dark:#1C1208; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Raleway',sans-serif; background:var(--cream); color:var(--dark); }
+    nav { position:fixed; top:0; width:100%; z-index:100; background:rgba(28,18,8,0.93); backdrop-filter:blur(8px); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; border-bottom:2px solid var(--gold); }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); letter-spacing:2px; text-decoration:none; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { color:var(--cream); text-decoration:none; font-size:.85rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:4px 0; border-bottom:2px solid transparent; transition:color .3s,border-color .3s; }
+    .nav-links a:hover,.nav-links a.active { color:var(--gold); border-bottom-color:var(--gold); }
+    .page-hero { height:55vh; display:flex; align-items:flex-end; padding:3rem; position:relative; overflow:hidden; }
+    .page-hero-bg { position:absolute; inset:0; background:linear-gradient(135deg,rgba(26,122,110,.7),rgba(28,18,8,.6)), url('imagenes/cultura.png') center/cover no-repeat; }
+    .page-hero-content { position:relative; z-index:2; }
+    .eyebrow { display:block; font-size:.75rem; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; font-weight:600; }
+    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,6vw,5rem); color:#fff; font-weight:900; line-height:1.05; }
+    .page-hero h1 em { color:var(--gold); font-style:italic; }
+    main { max-width:1000px; margin:0 auto; padding:5rem 2rem; }
+    p.lead { font-size:1.15rem; line-height:1.9; color:#4a3a28; margin-bottom:3rem; max-width:700px; }
+    .body-text { font-size:1rem; line-height:1.8; color:#4a3a28; margin-bottom:1.2rem; }
+    h3.sub-title { font-family:'Playfair Display',serif; font-size:1.8rem; margin:3rem 0 1.5rem; color:var(--teal); border-left:4px solid var(--gold); padding-left:1rem; }
+    .intro-block { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; margin-bottom:5rem; }
+    .intro-block img { width:100%; height:360px; object-fit:cover; border:4px solid var(--gold); }
+    .intro-text .label { font-size:.75rem; letter-spacing:5px; text-transform:uppercase; color:var(--coral); font-weight:700; margin-bottom:.5rem; display:block; }
+    .intro-text h2 { font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:1.2rem; line-height:1.2; }
+    .img-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:2rem 0; }
+    .img-grid img { width:100%; height:200px; object-fit:cover; transition:transform .3s; }
+    .img-grid img:hover { transform:scale(1.04); }
+    .fact-box { background:var(--dark); color:var(--cream); padding:2.5rem; margin:3rem 0; display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; text-align:center; }
+    .fact-box .fact strong { display:block; font-family:'Playfair Display',serif; font-size:2.5rem; color:var(--gold); }
+    .fact-box .fact span { font-size:.8rem; letter-spacing:2px; text-transform:uppercase; opacity:.8; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; margin:3rem 0; }
+    .split img { width:100%; height:300px; object-fit:cover; border:4px solid var(--gold); }
+    .barrio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; margin:2rem 0; }
+    .barrio-card { background:#fff; padding:1.8rem; box-shadow:0 4px 20px rgba(28,18,8,.08); border-top:4px solid var(--coral); transition:transform .3s; }
+    .barrio-card:hover { transform:translateY(-4px); }
+    .barrio-card h4 { font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:.6rem; }
+    .barrio-card p { font-size:.88rem; line-height:1.6; color:#6b5540; }
+    .video-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border:3px solid var(--gold); margin:2rem 0; }
+    .video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+    footer { background:var(--dark); color:rgba(255,255,255,0.5); text-align:center; padding:2.5rem; font-size:.82rem; border-top:2px solid var(--gold); }
+    footer span { color:var(--gold); }
+    @media(max-width:700px){.intro-block,.split{grid-template-columns:1fr}.img-grid{grid-template-columns:1fr 1fr}.fact-box{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">⚓ Cartagena</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="cultura.html" class="active">Cultura</a></li>
+    <li><a href="gastronomia.html">Gastronomía</a></li>
+    <li><a href="musica.html">Música</a></li>
+    <li><a href="turismo.html">Turismo</a></li>
+    <li><a href="personajes.html">Personajes</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <span class="eyebrow">Cartagena de Indias</span>
+    <h1>Cultura &<br/><em>Patrimonio</em></h1>
+  </div>
+</div>
+
+<main>
+  <p class="lead">Cartagena es una ciudad de capas: bajo sus murallas coloniales late una cultura afro-caribeña, indígena y española que se fusionó durante cinco siglos para crear una identidad única, propia e irrepetible.</p>
+
+  <div class="intro-block">
+    <img src="imagenes/torredelreloj.jpeg" alt="Torre del Reloj"/>
+    <div class="intro-text">
+      <span class="label">Historia viva</span>
+      <h2>Fundada en 1533 sobre el poblado indígena Calamarí</h2>
+      <p class="body-text">Pedro de Heredia fundó Cartagena de Indias el <strong>1 de junio de 1533</strong> sobre el asentamiento indígena Calamarí. Se convirtió en el principal puerto del Imperio español en América del Sur, por donde salían las riquezas del continente hacia Europa y llegaban miles de esclavos africanos.</p>
+      <p class="body-text">En <strong>1984</strong>, la UNESCO declaró su Centro Histórico Patrimonio Cultural de la Humanidad, reconociendo su arquitectura colonial, sus murallas y el valor histórico de cada una de sus calles y plazas.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Arquitectura Colonial: El Centro Amurallado</h3>
+  <p class="body-text">El Centro Amurallado es un museo a cielo abierto exclusivo de Cartagena. Sus casas de dos plantas con balcones floridos en madera tallada, sus iglesias barrocas del siglo XVII y sus plazas empedradas son la imagen más icónica de Colombia en el mundo. Los colores vibrantes —amarillo colonial, azul caribe, ocre y verde— de sus fachadas son tan propios de Cartagena que se reconocen al instante.</p>
+  <p class="body-text">Edificios clave: la <strong>Catedral de Santa Catalina de Alejandría</strong> (iniciada en 1577, la más antigua de Colombia), el <strong>Palacio de la Inquisición</strong> (1770, hoy museo), y la <strong>Iglesia y Convento de San Pedro Claver</strong>, donde reposan los restos del apóstol de los esclavos.</p>
+
+  <div class="img-grid">
+    <img src="imagenes/catedral.jpg" alt="Catedral de Cartagena"/>
+    <img src="imagenes/palacio.jpg" alt="Palacio de la Inquisición"/>
+    <img src="imagenes/iglesia.jpg" alt="San Pedro Claver"/>
+  </div>
+
+  <div class="fact-box">
+    <div class="fact"><strong>1533</strong><span>Año de Fundación</span></div>
+    <div class="fact"><strong>1984</strong><span>Patrimonio UNESCO</span></div>
+    <div class="fact"><strong>11 km</strong><span>De Murallas Históricas</span></div>
+  </div>
+
+  <h3 class="sub-title">Los Barrios con Alma de Cartagena</h3>
+  <div class="barrio-grid">
+    <div class="barrio-card">
+      <h4>🎨 Getsemaní</h4>
+      <p>El barrio más auténtico de Cartagena, extramuros del centro histórico. Cuna de la independencia, hoy lleno de murales, arte callejero y la famosa Plaza de la Trinidad donde el pueblo se reúne cada noche.</p>
+    </div>
+    <div class="barrio-card">
+      <h4>🏛️ Centro Histórico</h4>
+      <p>Calles empedradas y casonas coloniales con balcones floridos. Las plazas de Bolívar, Santo Domingo y la Aduana son el corazón cultural y social de la ciudad amurallada.</p>
+    </div>
+    <div class="barrio-card">
+      <h4>🐟 El Cabrero</h4>
+      <p>Barrio histórico donde nació Gabriel García Márquez. Tranquilo y con hermosas casas de principios del siglo XX frente a la bahía. Allí está la Casa Museo del Nobel.</p>
+    </div>
+    <div class="barrio-card">
+      <h4>⛵ La Manga</h4>
+      <p>Isla residencial entre la Bahía de Cartagena y la Ciénaga de Tesca. Tradicional y elegante, con hermosas casas de arquitectura republicana del siglo XX.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">La Palenquera: Símbolo Vivo de Cartagena</h3>
+  <div class="split">
+    <img src="imagenes/palenquera.jpg" alt="Palenquera"/>
+    <div>
+      <p class="body-text">La Palenquera es el símbolo más universal de Cartagena. Son mujeres afrodescendientes provenientes de <strong>San Basilio de Palenque</strong> —el primer pueblo libre de esclavos en América, fundado por Benkos Biohó a 70 km de Cartagena— que venden frutas tropicales recorriendo sus calles con coloridos trajes de pollera y batea en la cabeza.</p>
+      <p class="body-text">Su imagen representa la resistencia africana y la libertad conquistada a sangre y fuego en tierras cartageneras. San Basilio de Palenque fue declarado <strong>Patrimonio Inmaterial de la Humanidad por la UNESCO en 2005</strong>, reconociendo también su lengua criolla, el palenquero.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Festivales Propios de Cartagena</h3>
+  <p class="body-text"><strong>🎬 FICCI</strong> — El Festival Internacional de Cine de Cartagena, el más antiguo de América Latina (desde 1960), proyecta películas de todo el mundo en el Teatro Heredia y los espacios mágicos del Centro Histórico.</p>
+  <p class="body-text"><strong>🎉 Fiestas de Independencia (11 de Noviembre)</strong> — La celebración más grande de Cartagena conmemora su declaración de Independencia de 1811. Días de comparsas, disfraces, champeta, cumbia y porro en cada esquina de la ciudad.</p>
+  <p class="body-text"><strong>📚 Festival Hay Cartagena</strong> — Festival literario internacional que transforma las plazas y teatros coloniales de Cartagena en escenarios de pensamiento, debate y cultura para el mundo.</p>
+</main>
+</body>
+</html>

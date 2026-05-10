@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gastronomía – Cartagena de Indias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --gold:#D4A017; --coral:#E8522A; --teal:#1A7A6E; --cream:#FDF6EC; --dark:#1C1208; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Raleway',sans-serif; background:var(--cream); color:var(--dark); }
+    nav { position:fixed; top:0; width:100%; z-index:100; background:rgba(28,18,8,0.93); backdrop-filter:blur(8px); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; border-bottom:2px solid var(--gold); }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); letter-spacing:2px; text-decoration:none; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { color:var(--cream); text-decoration:none; font-size:.85rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:4px 0; border-bottom:2px solid transparent; transition:color .3s,border-color .3s; }
+    .nav-links a:hover,.nav-links a.active { color:var(--gold); border-bottom-color:var(--gold); }
+    .page-hero { height:55vh; display:flex; align-items:flex-end; padding:3rem; position:relative; overflow:hidden; }
+    .page-hero-bg { position:absolute; inset:0; background:linear-gradient(135deg,rgba(232,82,42,.75),rgba(28,18,8,.6)), url('imagenes/gastronomia.png') center/cover; }
+    .page-hero-content { position:relative; z-index:2; }
+    .eyebrow { display:block; font-size:.75rem; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; font-weight:600; }
+    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,6vw,5rem); color:#fff; font-weight:900; line-height:1.05; }
+    .page-hero h1 em { color:var(--gold); }
+    main { max-width:1000px; margin:0 auto; padding:5rem 2rem; }
+    p.lead { font-size:1.15rem; line-height:1.9; color:#4a3a28; margin-bottom:3rem; max-width:700px; }
+    .body-text { font-size:1rem; line-height:1.8; color:#4a3a28; margin-bottom:1.2rem; }
+    h3.sub-title { font-family:'Playfair Display',serif; font-size:1.8rem; margin:3rem 0 1.5rem; color:var(--teal); border-left:4px solid var(--gold); padding-left:1rem; }
+    .dish-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin:2rem 0 4rem; }
+    .dish-card { background:#fff; box-shadow:0 4px 20px rgba(28,18,8,.08); overflow:hidden; transition:transform .3s,box-shadow .3s; }
+    .dish-card:hover { transform:translateY(-5px); box-shadow:0 14px 40px rgba(28,18,8,.15); }
+    .dish-card img { width:100%; height:220px; object-fit:cover; }
+    .dish-card-body { padding:1.4rem; }
+    .dish-card-body h3 { font-family:'Playfair Display',serif; font-size:1.25rem; color:var(--dark); margin-bottom:.5rem; }
+    .dish-card-body p { font-size:.9rem; line-height:1.6; color:#6b5540; }
+    .tag { display:inline-block; background:var(--coral); color:#fff; font-size:.7rem; letter-spacing:2px; text-transform:uppercase; padding:.3rem .7rem; margin-bottom:.8rem; font-weight:700; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; margin:3rem 0; }
+    .split img { width:100%; height:300px; object-fit:cover; border:4px solid var(--gold); }
+    .sweet-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin:2rem 0; }
+    .sweet-card { background:var(--dark); color:var(--cream); padding:1.8rem; text-align:center; transition:transform .3s; }
+    .sweet-card:hover { transform:translateY(-4px); }
+    .sweet-card .emoji { font-size:2.5rem; margin-bottom:.8rem; display:block; }
+    .sweet-card h4 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--gold); margin-bottom:.5rem; }
+    .sweet-card p { font-size:.85rem; line-height:1.5; opacity:.85; }
+    .video-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border:3px solid var(--gold); margin:2rem 0; }
+    .video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+    footer { background:var(--dark); color:rgba(255,255,255,0.5); text-align:center; padding:2.5rem; font-size:.82rem; border-top:2px solid var(--gold); }
+    footer span { color:var(--gold); }
+    @media(max-width:700px){.split{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">⚓ Cartagena</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="cultura.html">Cultura</a></li>
+    <li><a href="gastronomia.html" class="active">Gastronomía</a></li>
+    <li><a href="musica.html">Música</a></li>
+    <li><a href="turismo.html">Turismo</a></li>
+    <li><a href="personajes.html">Personajes</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <span class="eyebrow">Sabores del Caribe Cartagenero</span>
+    <h1>Gastronomía<br/><em>de Cartagena</em></h1>
+  </div>
+</div>
+
+<main>
+  <p class="lead">La cocina cartagenera es hija del mar Caribe, la selva tropical y la herencia africana. Cada plato que se sirve en Cartagena lleva siglos de historia entre su sabor: el ñame de los indígenas zenúes, el coco de los africanos esclavizados y el aceite de los colonizadores españoles.</p>
+
+  <h3 class="sub-title">Platos Típicos de Cartagena</h3>
+  <div class="dish-grid">
+
+    <div class="dish-card">
+      <img src="imagenes/arepadehuevo.jpg" alt="Arepa de huevo"/>
+      <div class="dish-card-body">
+        <span class="tag">Desayuno cartagenero</span>
+        <h3>Arepa de Huevo</h3>
+        <p>El desayuno más cartagenero del mundo. Una arepa de maíz rellena de huevo y frita en aceite bien caliente. Nació en los mercados populares de Cartagena y hoy es orgullo de la ciudad. Se sirve con hogao de tomate y ají.</p>
+      </div>
+    </div>
+
+    <div class="dish-card">
+      <img src="imagenes/cazuelademariscos.jpg" alt="Cazuela de mariscos"/>
+      <div class="dish-card-body">
+        <span class="tag">Plato estrella</span>
+        <h3>Cazuela de Mariscos</h3>
+        <p>El plato más representativo del mar cartagenero. Camarones, langosta, almejas y pulpo del Caribe cocinados en crema de coco con especias locales. Se sirve en cazuela de barro directamente del fuego.</p>
+      </div>
+    </div>
+
+    <div class="dish-card">
+      <img src="imagenes/arrozdecoco.jpg" alt="Arroz con coco"/>
+      <div class="dish-card-body">
+        <span class="tag">Acompañamiento insustituible</span>
+        <h3>Arroz con Coco</h3>
+        <p>Herencia directa de los esclavos africanos que trajeron el coco a las costas cartageneras. Arroz cocinado con leche de coco y titoté (coco tostado) que le da un sabor dulce y ahumado único en el mundo.</p>
+      </div>
+    </div>
+
+    <div class="dish-card">
+      <img src="imagenes/sancochodepescado.jpg" alt="Sancocho de pescado"/>
+      <div class="dish-card-body">
+        <span class="tag">Sopa tradicional</span>
+        <h3>Sancocho de Pescado</h3>
+        <p>Caldo espeso y reconfortante hecho con pescado fresco del Caribe, ñame, yuca, plátano y especias costeñas. El plato que los cartageneros llevan siglos preparando en sus casas para las reuniones familiares.</p>
+      </div>
+    </div>
+
+    <div class="dish-card">
+      <img src="imagenes/patacon.jpg" alt="Patacón"/>
+      <div class="dish-card-body">
+        <span class="tag">Snack callejero</span>
+        <h3>Patacón con Hogao</h3>
+        <p>Plátano verde aplastado y frito, cubierto con hogao (salsa de tomate y cebolla cartagenera) y acompañado de queso costeño o mariscos. Infaltable en las noches de Getsemaní.</p>
+      </div>
+    </div>
+
+    <div class="dish-card">
+      <img src="imagenes/limonada.jpg" alt="Limonada de coco"/>
+      <div class="dish-card-body">
+        <span class="tag">Bebida emblemática</span>
+        <h3>Limonada de Coco</h3>
+        <p>La bebida más famosa y refrescante de Cartagena. Limón tahití, leche de coco, azúcar y hielo licuados hasta obtener una crema espumosa. El antídoto perfecto para el calor del Caribe cartagenero.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 class="sub-title">La Cocina de las Palenqueras</h3>
+  <div class="split">
+    <img src="imagenes/cocada.jpg" alt="Palenquera con frutas"/>
+    <div>
+      <p class="body-text">Las Palenqueras, mujeres de San Basilio de Palenque que recorren las calles de Cartagena, son también guardianas de la gastronomía más tradicional. Sus bateas están llenas de los sabores más auténticos de la región: <strong>mango biche con sal y limón</strong>, <strong>níspero</strong>, <strong>corozo</strong>, <strong>marañón</strong> y <strong>mamey</strong>.</p>
+      <p class="body-text">Su producto más emblemático son las <strong>cocadas</strong>: dulces artesanales de coco rallado cocinado con azúcar, panela o leche condensada. Las hay blancas, de panela, de maní y de ajonjolí. Son Patrimonio Gastronómico de Cartagena y se venden desde hace siglos en las mismas esquinas del centro histórico.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Dulces y Postres Cartageneros</h3>
+  <div class="sweet-grid">
+    <div class="sweet-card">
+      <span class="emoji">🥥</span>
+      <h4>Cocada</h4>
+      <p>Dulce de coco rallado con panela o azúcar. El postre más antiguo de Cartagena, herencia africana.</p>
+    </div>
+    <div class="sweet-card">
+      <span class="emoji">🍮</span>
+      <h4>Enyucado</h4>
+      <p>Torta de yuca rallada, coco y anís. Postre colonial cartagenero con ingredientes del trópico.</p>
+    </div>
+    <div class="sweet-card">
+      <span class="emoji">🌽</span>
+      <h4>Caballito de Maíz</h4>
+      <p>Maíz cocido envuelto en su misma hoja y servido con mantequilla y sal. Vendido en las calles del centro.</p>
+    </div>
+    <div class="sweet-card">
+      <span class="emoji">🍬</span>
+      <h4>Alegrías de Millo</h4>
+      <p>Barras crujientes de millo (maíz pequeño) con miel de panela. Dulce callejero ancestral de Cartagena.</p>
+    </div>
+  </div>
+</body>
+</html>
