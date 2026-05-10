@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Música – Cartagena de Indias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --gold:#D4A017; --coral:#E8522A; --teal:#1A7A6E; --cream:#FDF6EC; --dark:#1C1208; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Raleway',sans-serif; background:var(--cream); color:var(--dark); }
+    nav { position:fixed; top:0; width:100%; z-index:100; background:rgba(28,18,8,0.93); backdrop-filter:blur(8px); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; border-bottom:2px solid var(--gold); }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); letter-spacing:2px; text-decoration:none; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { color:var(--cream); text-decoration:none; font-size:.85rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:4px 0; border-bottom:2px solid transparent; transition:color .3s,border-color .3s; }
+    .nav-links a:hover,.nav-links a.active { color:var(--gold); border-bottom-color:var(--gold); }
+    .page-hero { height:55vh; display:flex; align-items:flex-end; padding:3rem; position:relative; overflow:hidden; }
+    .page-hero-bg { position:absolute; inset:0; background:linear-gradient(135deg,rgba(28,18,8,.7),rgba(212,160,23,.5)), url('imagenes/musica.png') center/cover; }
+    .page-hero-content { position:relative; z-index:2; }
+    .eyebrow { display:block; font-size:.75rem; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; font-weight:600; }
+    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,6vw,5rem); color:#fff; font-weight:900; line-height:1.05; }
+    .page-hero h1 em { color:var(--gold); }
+    main { max-width:1000px; margin:0 auto; padding:5rem 2rem; }
+    p.lead { font-size:1.15rem; line-height:1.9; color:#4a3a28; margin-bottom:3rem; max-width:700px; }
+    .body-text { font-size:1rem; line-height:1.8; color:#4a3a28; margin-bottom:1.2rem; }
+    h3.sub-title { font-family:'Playfair Display',serif; font-size:1.8rem; margin:3rem 0 1.5rem; color:var(--teal); border-left:4px solid var(--gold); padding-left:1rem; }
+
+    /* GENRE CARDS - featured champeta */
+    .genre-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; margin:2rem 0 4rem; }
+    .genre-card { background:var(--dark); color:var(--cream); padding:2rem; position:relative; overflow:hidden; transition:transform .3s; }
+    .genre-card::before { content:''; position:absolute; bottom:-20px; right:-20px; width:100px; height:100px; border-radius:50%; background:var(--gold); opacity:.12; transition:transform .3s; }
+    .genre-card:hover { transform:translateY(-5px); }
+    .genre-card:hover::before { transform:scale(2); }
+    .genre-card.featured { border:2px solid var(--gold); }
+    .genre-card.featured .featured-badge { display:inline-block; background:var(--gold); color:var(--dark); font-size:.65rem; letter-spacing:2px; text-transform:uppercase; padding:.25rem .6rem; margin-bottom:.8rem; font-weight:800; }
+    .genre-card .featured-badge { display:none; }
+    .genre-icon { font-size:2.5rem; margin-bottom:1rem; }
+    .genre-card h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); margin-bottom:.8rem; }
+    .genre-card p { font-size:.9rem; line-height:1.7; opacity:.85; }
+
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; margin:3rem 0; }
+    .split img { width:100%; height:300px; object-fit:cover; border:4px solid var(--gold); }
+
+    .tambor-box { background:var(--teal); color:#fff; padding:3rem; margin:3rem 0; display:grid; grid-template-columns:1fr 1fr 1fr; gap:2rem; text-align:center; }
+    .tambor-item strong { display:block; font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--gold); margin-bottom:.5rem; }
+    .tambor-item p { font-size:.85rem; line-height:1.5; opacity:.9; }
+
+    .video-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border:3px solid var(--gold); margin:2rem 0; }
+    .video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+    footer { background:var(--dark); color:rgba(255,255,255,0.5); text-align:center; padding:2.5rem; font-size:.82rem; border-top:2px solid var(--gold); }
+    footer span { color:var(--gold); }
+    @media(max-width:700px){.split,.tambor-box{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">⚓ Cartagena</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="cultura.html">Cultura</a></li>
+    <li><a href="gastronomia.html">Gastronomía</a></li>
+    <li><a href="musica.html" class="active">Música</a></li>
+    <li><a href="turismo.html">Turismo</a></li>
+    <li><a href="personajes.html">Personajes</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <span class="eyebrow">Ritmos Nacidos en Cartagena</span>
+    <h1>Música &<br/><em>Ritmo</em></h1>
+  </div>
+</div>
+
+<main>
+  <p class="lead">Cartagena es la cuna de los ritmos que definen su alma: la cumbia nació en sus costas, la champeta es su ritmo propio y urbano, el mapalé es su danza más frenética y el porro de sus tambores africanos suena desde el siglo XVII en sus calles y plazas.</p>
+
+  <h3 class="sub-title">Los Géneros de Cartagena</h3>
+  <div class="genre-grid">
+
+    <div class="genre-card featured">
+      <span class="featured-badge">⭐ El ritmo de Cartagena</span>
+      <div class="genre-icon">🎶</div>
+      <h3>La Champeta</h3>
+      <p>La champeta es el ritmo más propio y auténtico de Cartagena. Nació en los barrios populares afrocartageneros de Olaya, Uribe Uribe y Nelson Mandela en los años 80. Fusiona ritmos africanos (soukous, highlife), antillanos (son cubano, calipso) y costeños con letras en español que hablan de la vida cotidiana del pueblo cartagenero. Durante años fue estigmatizada por las élites, pero hoy es Patrimonio Musical de Cartagena y orgullo de su cultura popular.</p>
+    </div>
+
+    <div class="genre-card">
+      <div class="genre-icon">🥁</div>
+      <h3>La Cumbia</h3>
+      <p>Nació en la costa caribe colombiana, con Cartagena como uno de sus centros históricos. Es la fusión perfecta del tambor africano, la flauta de millo indígena y la danza española. Las mujeres bailan con velas encendidas en las manos. Hoy se baila en todo el mundo.</p>
+    </div>
+
+    <div class="genre-card">
+      <div class="genre-icon">💃</div>
+      <h3>El Mapalé</h3>
+      <p>Danza de origen africano nacida en las riberas del río Magdalena cerca a Cartagena. Su ritmo frenético y acrobático lo hace único en Colombia. Antiguamente lo bailaban los pescadores en las noches para celebrar la pesca; hoy es protagonista de los Carnavales de Cartagena.</p>
+    </div>
+
+    <div class="genre-card">
+      <div class="genre-icon">🪘</div>
+      <h3>El Porro Cartagenero</h3>
+      <p>Ritmo festivo y alegre interpretado con tambores, gaitas y flautas de millo. Propio de las fiestas patronales y las procesiones religiosas del Departamento de Bolívar. Las bandas pelayeras del sur de Bolívar tienen su base cultural en Cartagena.</p>
+    </div>
+
+    <div class="genre-card">
+      <div class="genre-icon">🪈</div>
+      <h3>La Gaita Cartagenera</h3>
+      <p>La gaita es el instrumento más antiguo de Cartagena: flauta indígena zenú hecha de cactus y cera de abejas. La gaita hembra lleva la melodía y la macho el ritmo. El Festival de Gaitas de Ovejas, en Bolívar, es su celebración más importante.</p>
+    </div>
+
+    <div class="genre-card">
+      <div class="genre-icon">🎺</div>
+      <h3>El Fandango</h3>
+      <p>Ritmo y danza colectiva propia de las sabanas de Bolívar y las fiestas populares de Cartagena. Se baila en rueda y celebra la cosecha, las fiestas patronales y la alegría de vivir en el Caribe colombiano.</p>
+    </div>
+
+  </div>
+
+  <h3 class="sub-title">La Champeta: El Ritmo del Pueblo Cartagenero</h3>
+  <div class="split">
+    <img src="imagenes/champeta.jpg" alt="Baile cartagenero"/>
+    <div>
+      <p class="body-text">La champeta nació en los años 70 y 80 en los barrios populares del sur de Cartagena, especialmente en <strong>Olaya Herrera, Nelson Mandela y Uribe Uribe</strong>. Sus primeros exponentes fueron músicos afrocartageneros que mezclaban en sus picós (equipos de sonido gigantes) música africana, antillana y costeña.</p>
+      <p class="body-text">Artistas pioneros como <strong>Anne Swing, Viviano Torres y "El Afinaito"</strong> le dieron forma al género. Durante décadas fue discriminada y llamada "música de negros" por sectores conservadores de Cartagena, pero el pueblo la siguió bailando en cada esquina, en cada picó, en cada fiesta de barrio.</p>
+      <p class="body-text">Hoy la champeta es reconocida como <strong>Patrimonio Cultural Inmaterial de Cartagena</strong> y es el género musical que mejor identifica a su gente: alegre, libre, afro y caribeña.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Los Tambores: Corazón de la Música Cartagenera</h3>
+  <div class="tambor-box">
+    <div class="tambor-item">
+      <strong>El Llamador</strong>
+      <p>Tambor pequeño que marca el compás base de la cumbia y el mapalé. Su ritmo constante es el corazón del conjunto.</p>
+    </div>
+    <div class="tambor-item">
+      <strong>El Alegre</strong>
+      <p>Tambor grande que improvisa y conversa con el llamador. Es el "cantante" de los tambores en la música cartagenera.</p>
+    </div>
+    <div class="tambor-item">
+      <strong>La Tambora</strong>
+      <p>Tambor de dos caras que se toca con baqueta y mano. Marca el tiempo grave y profundo de la cumbia afrocartagenera.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">El Picó: La Tecnología Musical de Cartagena</h3>
+  <p class="body-text">El <strong>picó</strong> es una invención cartagenera: equipos de sonido gigantes, decorados con pinturas de personajes populares, que recorren los barrios de Cartagena montados en camiones o instalados en solares. Son el escenario donde nació y creció la champeta. Cada picó tiene su nombre propio —El Rumbero del Caribe, El Timbalero, La Bestia del Ritmo— y sus seguidores apasionados. El picó es cultura cartagenera pura.</p>
+</body>
+</html>

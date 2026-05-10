@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Turismo – Cartagena de Indias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --gold:#D4A017; --coral:#E8522A; --teal:#1A7A6E; --cream:#FDF6EC; --dark:#1C1208; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Raleway',sans-serif; background:var(--cream); color:var(--dark); }
+    nav { position:fixed; top:0; width:100%; z-index:100; background:rgba(28,18,8,0.93); backdrop-filter:blur(8px); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; border-bottom:2px solid var(--gold); }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); letter-spacing:2px; text-decoration:none; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { color:var(--cream); text-decoration:none; font-size:.85rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:4px 0; border-bottom:2px solid transparent; transition:color .3s,border-color .3s; }
+    .nav-links a:hover,.nav-links a.active { color:var(--gold); border-bottom-color:var(--gold); }
+    .page-hero { height:55vh; display:flex; align-items:flex-end; padding:3rem; position:relative; overflow:hidden; }
+    .page-hero-bg { position:absolute; inset:0; background:linear-gradient(135deg,rgba(26,122,110,.65),rgba(28,18,8,.65)), url('imagenes/turismo.jpg') center/cover; }
+    .page-hero-content { position:relative; z-index:2; }
+    .eyebrow { display:block; font-size:.75rem; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; font-weight:600; }
+    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,6vw,5rem); color:#fff; font-weight:900; line-height:1.05; }
+    .page-hero h1 em { color:var(--gold); }
+    main { max-width:1100px; margin:0 auto; padding:5rem 2rem; }
+    p.lead { font-size:1.15rem; line-height:1.9; color:#4a3a28; margin-bottom:3rem; max-width:700px; }
+    .body-text { font-size:1rem; line-height:1.8; color:#4a3a28; margin-bottom:1.2rem; }
+    h3.sub-title { font-family:'Playfair Display',serif; font-size:1.8rem; margin:3rem 0 1.5rem; color:var(--teal); border-left:4px solid var(--gold); padding-left:1rem; }
+
+    /* India Catalina featured */
+    .featured-site { display:grid; grid-template-columns:380px 1fr; gap:3rem; align-items:center; background:var(--dark); color:var(--cream); padding:3rem; margin:2rem 0 4rem; }
+    .featured-site img { width:100%; height:340px; object-fit:cover; border:4px solid var(--gold); }
+    .featured-site .f-label { font-size:.72rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:.5rem; display:block; }
+    .featured-site h2 { font-family:'Playfair Display',serif; font-size:2rem; color:#fff; margin-bottom:1rem; line-height:1.2; }
+    .featured-site h2 em { color:var(--gold); font-style:italic; }
+    .featured-site p { font-size:.97rem; line-height:1.8; opacity:.9; margin-bottom:1rem; }
+
+    .attraction-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; margin:2rem 0; }
+    .attraction { display:grid; grid-template-columns:130px 1fr; gap:1.2rem; background:#fff; padding:1.4rem; box-shadow:0 4px 20px rgba(28,18,8,.08); transition:transform .3s; }
+    .attraction:hover { transform:translateY(-4px); }
+    .attraction img { width:130px; height:120px; object-fit:cover; }
+    .attraction-info .badge { display:inline-block; background:var(--teal); color:#fff; font-size:.68rem; letter-spacing:2px; text-transform:uppercase; padding:.25rem .6rem; margin-bottom:.5rem; font-weight:700; }
+    .attraction-info h4 { font-family:'Playfair Display',serif; font-size:1.05rem; margin-bottom:.4rem; }
+    .attraction-info p { font-size:.84rem; line-height:1.5; color:#6b5540; }
+
+    .beaches { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:2rem 0; }
+    .beach-card { position:relative; height:240px; overflow:hidden; }
+    .beach-card img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+    .beach-card:hover img { transform:scale(1.08); }
+    .beach-card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(28,18,8,.75) 0%,transparent 60%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.2rem; }
+    .beach-card-overlay h4 { font-family:'Playfair Display',serif; color:#fff; font-size:1.2rem; }
+    .beach-card-overlay p { color:rgba(255,255,255,.8); font-size:.8rem; margin-top:.3rem; }
+
+    .video-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border:3px solid var(--gold); margin:2rem 0; }
+    .video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+    footer { background:var(--dark); color:rgba(255,255,255,0.5); text-align:center; padding:2.5rem; font-size:.82rem; border-top:2px solid var(--gold); }
+    footer span { color:var(--gold); }
+    @media(max-width:750px){.featured-site{grid-template-columns:1fr}.beaches{grid-template-columns:1fr}.attraction{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">⚓ Cartagena</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="cultura.html">Cultura</a></li>
+    <li><a href="gastronomia.html">Gastronomía</a></li>
+    <li><a href="musica.html">Música</a></li>
+    <li><a href="turismo.html" class="active">Turismo</a></li>
+    <li><a href="personajes.html">Personajes</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <span class="eyebrow">Destinos Imperdibles de Cartagena</span>
+    <h1>Sitios<br/><em>Turísticos</em></h1>
+  </div>
+</div>
+
+<main>
+  <p class="lead">Cartagena concentra en pocos kilómetros algunos de los lugares más fascinantes de América: fortalezas coloniales, plazas históricas llenas de vida, monumentos emblemáticos, playas paradisíacas e islas de ensueño en el Caribe.</p>
+
+  <!-- INDIA CATALINA - FEATURED -->
+  <h3 class="sub-title">La India Catalina: Símbolo de Cartagena</h3>
+  <div class="featured-site">
+    <img src="imagenes/indiacatalina.jpg" alt="Monumento India Catalina"/>
+    <div>
+      <span class="f-label">🏆 Símbolo máximo de Cartagena</span>
+      <h2>La <em>India Catalina</em></h2>
+      <p>La India Catalina es el monumento más representativo e identitario de Cartagena de Indias. Se encuentra en la entrada del Centro Histórico, en la glorieta frente a la Torre del Reloj, y da la bienvenida a todos quienes llegan a la Ciudad Heroica.</p>
+      <p>La escultura representa a <strong>Catalina de Indias</strong>, una mujer indígena del pueblo Calamari que fue capturada por los españoles siendo niña, llevada a Santo Domingo donde aprendió español, y regresó a Cartagena como intérprete y traductora durante la conquista. Su figura encarna la historia de resistencia y encuentro de culturas en Cartagena.</p>
+      <p>La estatua fue diseñada por el escultor cartagenero <strong>Eladio Gil</strong> en 1974. Además, la India Catalina da nombre al <strong>Premio India Catalina</strong>, el galardón más importante del Festival Internacional de Cine de Cartagena (FICCI), equivalente al Óscar colombiano.</p>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Monumentos y Sitios Históricos de Cartagena</h3>
+  <div class="attraction-list">
+
+    <div class="attraction">
+      <img src="imagenes/castillosanfelipe.jpg" alt="Castillo San Felipe"/>
+      <div class="attraction-info">
+        <span class="badge">Fortaleza colonial</span>
+        <h4>Castillo San Felipe de Barajas</h4>
+        <p>La fortaleza militar más grande construida por los españoles en toda América. Símbolo de la resistencia cartagenera, fue construida sobre el cerro San Lázaro entre 1536 y 1657. Sus túneles internos son una maravilla de ingeniería militar.</p>
+      </div>
+    </div>
+
+    <div class="attraction">
+      <img src="imagenes/torredelreloj2.jpeg" alt="Torre del Reloj"/>
+      <div class="attraction-info">
+        <span class="badge">Monumento icónico</span>
+        <h4>Torre del Reloj (Boca del Puente)</h4>
+        <p>Puerta principal de acceso al Centro Histórico Amurallado. Su icónica torre con reloj, construida en el siglo XVII, es el símbolo más reconocido de Cartagena y el punto de encuentro obligado de la ciudad.</p>
+      </div>
+    </div>
+
+    <div class="attraction">
+      <img src="imagenes/murallas.jpeg" alt="Murallas"/>
+      <div class="attraction-info">
+        <span class="badge">Patrimonio UNESCO</span>
+        <h4>Las Murallas de Cartagena</h4>
+        <p>Once kilómetros de murallas coloniales construidas entre los siglos XVI y XVIII para proteger la ciudad de ataques piratas. Hoy son el paseo preferido de cartageneros y turistas al atardecer, con vista al mar Caribe.</p>
+      </div>
+    </div>
+
+    <div class="attraction">
+      <img src="imagenes/iglesia.jpg" alt="San Pedro Claver"/>
+      <div class="attraction-info">
+        <span class="badge">Iglesia histórica</span>
+        <h4>Iglesia San Pedro Claver</h4>
+        <p>Dedicada al Padre Pedro Claver, jesuita español que dedicó su vida a defender y bautizar a los esclavos africanos que llegaban a Cartagena. Fue canonizado como el "Apóstol de los Negros" y es el primer santo de América.</p>
+      </div>
+    </div>
+
+    <div class="attraction">
+      <img src="imagenes/palacio.jpg" alt="Palacio Inquisición"/>
+      <div class="attraction-info">
+        <span class="badge">Museo histórico</span>
+        <h4>Palacio de la Inquisición</h4>
+        <p>Construido en 1770, fue sede del Tribunal del Santo Oficio que juzgó a más de 800 personas. Hoy es el Museo Histórico de Cartagena, con colecciones sobre la Inquisición, la Independencia y la historia de la ciudad.</p>
+      </div>
+    </div>
+
+    <div class="attraction">
+      <img src="imagenes/catedral.jpg" alt="Catedral"/>
+      <div class="attraction-info">
+        <span class="badge">La más antigua de Colombia</span>
+        <h4>Catedral de Santa Catalina</h4>
+        <p>Iniciada en 1575, es la catedral más antigua de Colombia. Ubicada en el corazón del Centro Histórico, frente a la Plaza de Bolívar. Su torre campanario domina el perfil del casco amurallado de Cartagena.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 class="sub-title">Playas e Islas de Cartagena</h3>
+  <div class="beaches">
+    <div class="beach-card">
+      <img src="imagenes/playasblancas.jpg" alt="Playa Blanca"/>
+      <div class="beach-card-overlay">
+        <h4>Playa Blanca – Isla Barú</h4>
+        <p>Arena blanca y mar turquesa, la playa más famosa de Cartagena</p>
+      </div>
+    </div>
+    <div class="beach-card">
+      <img src="imagenes/islasdelrosario.jpg" alt="Islas del Rosario"/>
+      <div class="beach-card-overlay">
+        <h4>Islas del Rosario</h4>
+        <p>Archipiélago coralino a 35 km de Cartagena, aguas cristalinas</p>
+      </div>
+    </div>
+    <div class="beach-card">
+      <img src="imagenes/bocagrande.jpg" alt="Bocagrande"/>
+      <div class="beach-card-overlay">
+        <h4>Bocagrande</h4>
+        <p>El sector moderno de Cartagena con playas frente a los hoteles</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
