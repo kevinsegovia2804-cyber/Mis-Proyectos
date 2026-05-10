@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>14 Sistemas de Amortización</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="header-inner">
+      <div>
+        <div class="header-badge">Matemáticas Financieras</div>
+        <h1>14 Sistemas de Amortización</h1>
+        <p class="header-sub">Calculadora completa con exportación a Excel dinámico (Fórmulas Activas)</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-all" onclick="exportarTodosExcel()">
+          Exportar TODOS los Sistemas
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="tabs-wrapper">
+    <div class="tabs-nav" id="tabsNav">
+      <button class="tab-btn active" onclick="showTab('overview', this)">Inicio</button>
+      <button class="tab-btn" onclick="showTab('s1', this)">S.01 Francés</button>
+      <button class="tab-btn" onclick="showTab('s2', this)">S.02 Alemán</button>
+      <button class="tab-btn" onclick="showTab('s3', this)">S.03 Americano</button>
+      <button class="tab-btn" onclick="showTab('s4', this)">S.04 Creciente Art.</button>
+      <button class="tab-btn" onclick="showTab('s5', this)">S.05 Decreciente Art.</button>
+      <button class="tab-btn" onclick="showTab('s6', this)">S.06 Creciente Geom.</button>
+      <button class="tab-btn" onclick="showTab('s7', this)">S.07 Decreciente Geom.</button>
+      <button class="tab-btn" onclick="showTab('s8', this)">S.08 Gracia Total</button>
+      <button class="tab-btn" onclick="showTab('s9', this)">S.09 Gracia Parcial</button>
+      <button class="tab-btn" onclick="showTab('s10', this)">S.10 Amort. Constante</button>
+      <button class="tab-btn" onclick="showTab('s11', this)">S.11 Tasa Variable</button>
+      <button class="tab-btn" onclick="showTab('s12', this)">S.12 Capitalización</button>
+      <button class="tab-btn" onclick="showTab('s13', this)">S.13 Cuotas Extra.</button>
+      <button class="tab-btn" onclick="showTab('s14', this)">S.14 Anticipado</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-overview">
+      <div class="overview-grid" id="overviewGrid"></div>
+    </div>
+
+    <div class="tab-panel" id="tab-s1"><div id="content-s1"></div></div>
+    <div class="tab-panel" id="tab-s2"><div id="content-s2"></div></div>
+    <div class="tab-panel" id="tab-s3"><div id="content-s3"></div></div>
+    <div class="tab-panel" id="tab-s4"><div id="content-s4"></div></div>
+    <div class="tab-panel" id="tab-s5"><div id="content-s5"></div></div>
+    <div class="tab-panel" id="tab-s6"><div id="content-s6"></div></div>
+    <div class="tab-panel" id="tab-s7"><div id="content-s7"></div></div>
+    <div class="tab-panel" id="tab-s8"><div id="content-s8"></div></div>
+    <div class="tab-panel" id="tab-s9"><div id="content-s9"></div></div>
+    <div class="tab-panel" id="tab-s10"><div id="content-s10"></div></div>
+    <div class="tab-panel" id="tab-s11"><div id="content-s11"></div></div>
+    <div class="tab-panel" id="tab-s12"><div id="content-s12"></div></div>
+    <div class="tab-panel" id="tab-s13"><div id="content-s13"></div></div>
+    <div class="tab-panel" id="tab-s14"><div id="content-s14"></div></div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
