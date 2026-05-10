@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>W&L COSMETICS</title>
+        <link rel="icon" type="image/x-icon" href="assets/logo wenlau (2).png" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css?v=1.0.6"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+            <div class="container px-3 px-md-5 d-flex align-items-center justify-content-between">
+                <a class="navbar-brand brand-fancy m-0" href="#!" id="brand-name">W&L COSMETICS</a>
+                
+                <div class="d-flex align-items-center flex-grow-1 justify-content-end">
+                    <div class="search-box me-2">
+                        <input type="text" id="product-search" class="search-input" placeholder="Buscar...">
+                        <button class="search-btn" id="search-trigger">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+
+                    <button class="btn btn-outline-dark position-relative" type="button" data-bs-toggle="modal" data-bs-target="#cartModal">
+                        <i class="bi-cart-fill"></i>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <header class="bg-dark py-5 position-relative large-header">
+            <img class="header-main-image" src="assets/LOGO.png" alt="Logo" />
+            <div class="container px-4 px-lg-5 my-5 position-relative header-text-overlay">
+                <div class="text-center text-white neon-title">
+                    <h1 class="display-4 fw-bolder">W&L</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">COSMETICS</p>
+                </div>
+            </div>
+        </header>
+        
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div id="productos-container" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    </div>
+            </div>
+        </section>
+
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; WENLAU COSMETICOS 2026</p></div>
+        </footer>
+
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header header-pink">
+                <h5 class="modal-title" id="cartModalLabel">TU CARRITO DE COMPRAS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul id="cart-items" class="list-group list-group-flush mb-3">
+                  <li class="list-group-item d-flex justify-content-center text-muted border-0" id="empty-cart-message">El carrito está vacío.</li>
+                </ul>
+                <div class="fw-bold fs-5 mt-2 px-2">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+              </div>
+              <div class="modal-footer border-0 d-flex justify-content-end">
+                <button type="button" class="btn btn-seguir px-4 py-2" data-bs-dismiss="modal">Seguir comprando</button>
+                <button type="button" class="btn btn-realizar px-4 py-2" id="checkout-button">Realizar pedido</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal fade" id="modalConfirmar" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header header-pink-slim">
+                        <h5 class="modal-title">FINALIZAR PEDIDO</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    
+                    <div class="modal-body px-4">
+                        <div class="resumen-box-unificado mb-3">
+                            <p class="small text-muted fw-bold mb-3 text-uppercase" style="font-size: 0.75rem; letter-spacing: 0.5px;">RESUMEN DEL PEDIDO</p>
+                            
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-uppercase" style="font-size: 0.75rem;">NOMBRE DEL CLIENTE:</label>
+                                <input type="text" id="nombre-cliente" class="form-control input-nombre-flat" placeholder="" required>
+                            </div>
+        
+                            <div id="resumen-pedido-detalle" class="small">
+                                </div>
+                        </div>
+                    </div>
+        
+                    <div class="modal-footer border-0 d-flex justify-content-end pb-4 px-4">
+                        <button type="button" class="btn btn-seguir px-4 py-2" data-bs-dismiss="modal">CANCELAR</button>
+                        <button type="button" onclick="enviarPedidoBD()" class="btn btn-realizar px-4 py-2 fw-bold">CONFIRMAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="zoomOverlay" class="zoom-overlay">
+            <img id="zoomImage" src="" alt="Zoom">
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/script.js?v=1.0.9"></script>
+    </body>
+</html>

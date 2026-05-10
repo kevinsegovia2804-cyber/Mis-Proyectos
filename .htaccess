@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Si alguien intenta entrar a conexion.php directamente desde el navegador
+# (petición GET sin la cabecera de tu código JS), lo mandamos al inicio
+RewriteCond %{REQUEST_METHOD} GET
+RewriteCond %{HTTP:X-Requested-With} !^XMLHttpRequest$
+RewriteRule ^conexion\.php$ https://wenlaucosmeticos.com/ [R=301,L]
